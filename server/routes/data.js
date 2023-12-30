@@ -8,12 +8,12 @@ const {getAllData , getTopicData, getSectorData , getRegionData , getPestleData 
 
 //routes
 router.get("/getAllData",getAllData);
-router.get("/getTopicData",getTopicData);
-router.get("/getSectorData",getSectorData);
-router.get("/getRegionData",getRegionData);
-router.get("/getPestleData",getPestleData);
-router.get("/getSourceData",getSourceData);
-router.get("/getCountryData",getCountryData);
+router.post("/getTopicData",getTopicData);
+router.post("/getSectorData",getSectorData);
+router.post("/getRegionData",getRegionData);
+router.post("/getPestleData",getPestleData);
+router.post("/getSourceData",getSourceData);
+router.post("/getCountryData",getCountryData);
 
 
 module.exports = router;
