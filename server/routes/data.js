@@ -2,6 +2,7 @@
 const express = require("express")
 const router = express.Router()
 
+//controllers
 const {getAllData , getTopicData, getSectorData , getRegionData , getPestleData , getSourceData , getCountryData} =require("../controllers/dataController");
 
 
