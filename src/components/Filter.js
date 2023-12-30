@@ -43,10 +43,13 @@ const Filter = () => {
           padding: '10px',
           border: '1px solid #ccc',
           cursor: 'pointer',
+          textAlign:"center"
         }}
         onClick={handleFilterClick}
+        
       >
-       Filter
+    
+       Filters
       </div>
 
       <Dialog open={filterDialogOpen} onClose={handleFilterClose}>
@@ -92,7 +95,7 @@ const Filter = () => {
             </DialogContentText>
             {/* Add more content or options here */}
 
-            {/* agaar selected option topic hai */}
+            {/* agaar selected option topic hai  on click of option handle filter and handle option will also call with api*/}
             {selectedOption === "topic" ? 
             topicData.map( (topic)=>{
                 return (
@@ -151,7 +154,7 @@ const Filter = () => {
               {selectedOption === "country" ? 
             countryData.map( (country)=>{
                 return (
-                    <Button>
+                    <Button >
                         {country}
                     </Button>
                 )
