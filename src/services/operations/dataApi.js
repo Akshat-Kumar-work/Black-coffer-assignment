@@ -1,0 +1,4 @@
+import {dataEndPoints} from "../api";
+
+const {GET_ALLDATA , GET_COUNTRYDATA ,GET_PESTLEDATA , GET_REGIONDATA , GET_SECTORDATA , GET_SOURCEDATA , GET_TOPICDATA} = dataEndPoints;
+
