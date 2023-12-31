@@ -60,11 +60,11 @@ console.log(currentData)
 
   console.log("data ",data)
 
-   const options = {
+  const options = {
     plugins: {
       title: {
         display: true,
-        text: 'Chart.js Bar Chart - Stacked',
+        text: 'Dynamic Data Chart',
       },
       zoom: {
         zoom: {
@@ -80,18 +80,41 @@ console.log(currentData)
           enabled: true,
           mode: 'xy',
         },
+        limits: {
+          x: { min: -10, max: 10 },
+          y: { min: -10, max: 10 },
+        },
+        rangeMin: {
+          x: null,
+          y: null,
+        },
+        rangeMax: {
+          x: null,
+          y: null,
+        },
       },
     },
     responsive: true,
+    maintainAspectRatio: true, // Disable aspect ratio for responsiveness
     scales: {
       x: {
         stacked: true,
+        title: {
+          display: true,
+          text: '',
+        },
       },
       y: {
         stacked: true,
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: '',
+        },
       },
     },
   };
+
 
   return <Bar data={data} options={options} />;
 };
