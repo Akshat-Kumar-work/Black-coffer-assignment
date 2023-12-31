@@ -4,6 +4,29 @@ import { setCurrentData } from "../../slices/dataSlice";
 
 const {GET_ALLDATA , GET_COUNTRYDATA ,GET_PESTLEDATA , GET_REGIONDATA , GET_SECTORDATA , GET_SOURCEDATA , GET_TOPICDATA} = dataEndPoints;
 
+
+export  function getAllData () {
+
+    let Data = []
+    return async (dispatch)=>{
+        try{
+            const response = await apiConnector("GET", GET_ALLDATA)
+            console.log("get all data response",response);
+            if(!response.data.success){
+                throw new Error(response.data.message)
+            }
+
+            Data = response.data.data
+
+        }
+        catch(err){
+            console.log("get all data api error",err)
+        }
+        dispatch(setCurrentData(Data))
+    }
+}
+
+
 export  function getTopicData (topic) {
     let Data = []
     return async (dispatch)=>{

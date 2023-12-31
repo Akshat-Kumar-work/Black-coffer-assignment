@@ -1,7 +1,12 @@
 import React from 'react'
 import Filter from './Filter'
+// import {  useNavigate } from 'react-router-dom'
 
 const SideBar = () => {
+  // const navigate = useNavigate();
+  // function DashboardClick (){
+  //   navigate("/")
+  // }
   return (
     <div>
 

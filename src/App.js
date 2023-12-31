@@ -3,13 +3,20 @@ import { Routes , Route } from 'react-router-dom';
 import './App.css';
 import Dashboard from './pages/Dashboard';
 import AllChart from './components/AllChart';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getAllData } from './services/operations/dataApi';
+import { useDispatch } from 'react-redux';
+
+
 
 function App() {
+  const dispatch  = useDispatch();
 
-  const CurrentData = useSelector( (state)=>state.dataSlice);
-  console.log(CurrentData)
-  
+// yaha par use effect use karenge taki first rendering par all data fetch hojae
+useEffect(()=>{
+  dispatch(getAllData());
+},[])
+
   return (
    <div>
 
