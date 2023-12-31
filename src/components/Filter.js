@@ -12,12 +12,23 @@ import { sourceData } from '../filterData/source';
 import { pestleData } from '../filterData/pestle';
 import { countryData } from '../filterData/country';
 
+import { useDispatch } from "react-redux";
+import {getTopicData , getCountryData , getPestleData ,getRegionData , getSectorData , getSourceData } from "../services/operations/dataApi";
+
+
+
+
 const Filter = () => {
   const [filterDialogOpen, setFilterDialogOpen] = useState(false);
   const [optionsDialogOpen, setOptionsDialogOpen] = useState(false);
 
   //we will get selected filter option from here
   const [selectedOption, setSelectedOption] = useState(null);
+
+
+
+// //main selected sub -sub option
+// const [filterToApply , setFilterToApply] = useState(null);
 
   const handleFilterClick = () => {
     setFilterDialogOpen(true);
@@ -35,6 +46,55 @@ const Filter = () => {
   const handleOptionsClose = () => {
     setOptionsDialogOpen(false);
   };
+
+
+  const dispatch = useDispatch();
+
+
+  //functions to handle onclick of filters
+function onClickTopic (topic){
+
+  dispatch(getTopicData(topic));
+  setFilterDialogOpen(false)
+  setOptionsDialogOpen(false)
+}
+
+function onClickSector (sector){
+
+  dispatch(getSectorData(sector));
+  setFilterDialogOpen(false)
+  setOptionsDialogOpen(false)
+}
+
+function onClickRegion (region){
+
+  dispatch(getRegionData(region));
+  setFilterDialogOpen(false)
+  setOptionsDialogOpen(false)
+}
+
+function onClickPestle (pestle){
+
+  dispatch(getPestleData(pestle));
+  setFilterDialogOpen(false)
+  setOptionsDialogOpen(false)
+}
+
+function onClickSource (source){
+
+  dispatch(getSourceData(source));
+  setFilterDialogOpen(false)
+  setOptionsDialogOpen(false)
+}
+
+function onClickCountry (country){
+
+  dispatch(getCountryData(country));
+  setFilterDialogOpen(false)
+  setOptionsDialogOpen(false)
+}
+
+
 
   return (
     <div>
@@ -98,8 +158,9 @@ const Filter = () => {
             {/* agaar selected option topic hai  on click of option handle filter and handle option will also call with api*/}
             {selectedOption === "topic" ? 
             topicData.map( (topic)=>{
+              
                 return (
-                    <Button>
+                    <Button key={topic}  onClick={()=>onClickTopic(topic)}>
                         {topic}
                     </Button>
                 )
@@ -109,8 +170,9 @@ const Filter = () => {
             {/* agaar selected option region hai */}
             {selectedOption === "region" ? 
             regionData.map( (region)=>{
+          
                 return (
-                    <Button>
+                    <Button key={region} onClick={()=>onClickRegion(region)}>
                         {region}
                     </Button>
                 )
@@ -121,7 +183,7 @@ const Filter = () => {
                {selectedOption === "sector" ? 
             sectorData.map( (sector)=>{
                 return (
-                    <Button>
+                    <Button key={sector} onClick={()=>onClickSector(sector)}>
                         {sector}
                     </Button>
                 )
@@ -132,7 +194,7 @@ const Filter = () => {
              {selectedOption === "source" ? 
             sourceData.map( (source)=>{
                 return (
-                    <Button>
+                    <Button key={source} onClick={()=>onClickSource(source)}>
                         {source}
                     </Button>
                 )
@@ -143,7 +205,7 @@ const Filter = () => {
               {selectedOption === "pestle" ? 
             pestleData.map( (pestle)=>{
                 return (
-                    <Button>
+                    <Button key={pestle} onClick={()=>onClickPestle(pestle)}>
                         {pestle}
                     </Button>
                 )
@@ -154,7 +216,7 @@ const Filter = () => {
               {selectedOption === "country" ? 
             countryData.map( (country)=>{
                 return (
-                    <Button >
+                    <Button key={country} onClick={()=>onClickCountry(country)} >
                         {country}
                     </Button>
                 )
